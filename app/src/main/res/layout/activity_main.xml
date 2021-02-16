@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_height="match_parent"
-        android:layout_below="@id/bottom_nav"
-        android:id="@+id/container_frag"
-        app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true"
-        />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- tab layout which contains which is
+             important to show tabs -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/nav_menu"
-        android:id="@+id/bottom_nav"/>
+        app:tabIndicatorColor="#FFF"
+        android:background="@android:color/holo_green_dark"
+        app:tabMaxWidth="0dp"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed" />
 
-</RelativeLayout>
+    <!-- view pager is used to open other fragment by using
+        left or right swipe-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</LinearLayout>

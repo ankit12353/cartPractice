@@ -1,18 +1,38 @@
 package com.android.practise.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
-import com.android.practise.R
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
+import com.android.practise.databinding.ActivityMainBinding
+import com.android.practise.ui.main.adapter.VPAdapter
+import com.android.practise.ui.main.fragment.AddFragment
+import com.android.practise.ui.main.fragment.CartFragment
+import com.android.practise.ui.main.fragment.ListFragment
+import com.android.practise.ui.main.model.Item
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val navController =Navigation.findNavController(this, R.id.container_frag)
-        NavigationUI.setupWithNavController(bottom_nav,navController)
+        setUpVP()
+
     }
+
+    fun switchViewPager(item: Int) {
+        binding.viewpager.setCurrentItem(item, true)
+    }
+
+    private fun setUpVP() {
+        val adapter = VPAdapter(supportFragmentManager)
+        adapter.addFragment(AddFragment(), "Add")
+        adapter.addFragment(ListFragment(), "List")
+        adapter.addFragment(CartFragment(), "Cart")
+
+        binding.viewpager.adapter = adapter
+        binding.tabLayout.setupWithViewPager(binding.viewpager)
+    }
+
 }

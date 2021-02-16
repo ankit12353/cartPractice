@@ -7,20 +7,17 @@ import com.android.practise.base.BaseRvAdapter
 import com.android.practise.databinding.ItemListBinding
 import com.android.practise.ui.main.model.Item
 
-class ItemListRvAdapter : BaseRvAdapter<Item, ItemListBinding>() {
+class CartRvAdapter : BaseRvAdapter<Item, ItemListBinding>() {
     override fun onBindViewHolder(holder: BaseViewHolder<ItemListBinding>, position: Int) {
-
         val item = list[position]
         holder.binding.apply {
             tvShowName.text = item.name
             tvShowPrice.text = item.price
             tvShowQuantity.text = item.quantity
-            tvShowTotalPrice.visibility = View.GONE
-            btnAddItem.visibility = View.GONE
-            btnLessItem.visibility = View.GONE
-            btnAddToCart.setOnClickListener {
-                listener!!.invoke(item, position)
-            }
+            val totalPrice = item.quantity.toInt() * item.price.toInt()
+            tvShowTotalPrice.text = totalPrice.toString()
+
+            btnAddToCart.visibility = View.GONE
         }
     }
 

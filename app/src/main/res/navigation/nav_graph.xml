@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.android.practise.ui.main.AddFragment"
+        android:name="com.android.practise.ui.main.fragment.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.android.practise.ui.main.ListFragment"
+        android:name="com.android.practise.ui.main.fragment.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.android.practise.ui.main.CartFragment"
+        android:name="com.android.practise.ui.main.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

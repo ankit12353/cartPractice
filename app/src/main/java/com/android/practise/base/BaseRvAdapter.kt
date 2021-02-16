@@ -11,12 +11,13 @@ abstract class BaseRvAdapter<T : Any, VB : ViewBinding> :
     var list = mutableListOf<T>()
 
     fun addItems(list: MutableList<T>) {
-        this.list.clear()
         this.list = list
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)  = BaseViewHolder<VB> (
+    var listener: ((item: T, position: Int) -> Unit)? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = BaseViewHolder<VB>(
         setViewHolder(parent)
     )
 
